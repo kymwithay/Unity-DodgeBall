@@ -45,10 +45,15 @@ public class Ball : MonoBehaviour
 			mFlying = false;
 			transform.parent = c.transform;
 		}
-		else if (c.name == "Enemy")
+		else
 		{
-			c.rigidbody.AddForce(Vector3.right * 50, ForceMode.Force);
-			mFlying = false;
+			var enemy = c.GetComponent<Enemy>();
+			if (enemy != null)
+			{
+				enemy.Hit();
+				//c.rigidbody.AddForce(Vector3.up * 50, ForceMode.Force);
+				mFlying = false;
+			}
 		}
 	}
 
