@@ -21,6 +21,9 @@ public class Move : MonoBehaviour
 
 	void Update()
 	{
+		if (transform.parent != null)
+			return;
+
 		var x = Input.GetAxis("Horizontal");
 		if ((x < 0 && transform.position.x > LeftTopT.position.x) ||
 			(x > 0 && transform.position.x < BottomRightT.position.x))

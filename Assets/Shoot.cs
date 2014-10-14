@@ -3,21 +3,15 @@ using System.Collections;
 
 public class Shoot : MonoBehaviour
 {
-	Transform mBall;
-	Ball mBallScript;
-
-	void Start()
-	{
-		mBall = GameObject.FindGameObjectWithTag("Ball").transform;
-		mBallScript = mBall.GetComponent<Ball>();
-	}
-
 	void Update()
 	{
+		if (transform.parent != null)
+			return;
+
 		if (Input.GetKeyUp(KeyCode.LeftShift))
 		{
-			if (mBall.IsChildOf(transform))
-				mBallScript.Shoot();
+			if (Ball.Instance.transform.IsChildOf(transform))
+				Ball.Instance.Shoot();
 		}
 	}
 }
